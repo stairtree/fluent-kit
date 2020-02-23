@@ -26,14 +26,14 @@ public final class ModelField<Model, Value>: AnyField, FieldRepresentable
                 case .bind(let bind):
                     return bind as! Value
                 case .default:
-                    fatalError("Cannot access default field before it is initialized or fetched")
+                    fatalError("Cannot access default field for '\(key)' before it is initialized or fetched")
                 default:
-                    fatalError("Unexpected input value type: \(value)")
+                    fatalError("Unexpected input value type for '\(key)': \(value)")
                 }
             } else if let value = self.outputValue {
                 return value
             } else {
-                fatalError("Cannot access field before it is initialized or fetched")
+                fatalError("Cannot access field '\(key)' before it is initialized or fetched")
             }
         }
         set {
